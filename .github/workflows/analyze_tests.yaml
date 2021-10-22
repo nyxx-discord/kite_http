@@ -1,0 +1,32 @@
+name: analyze tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-kite-http:
+    name: Test main nyxx package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub_cache
+          key: ${{ runner.os }}
+
+      - name: Setup Dart Action
+        uses: cedx/setup-dart@v2.3.0
+        with:
+         release-channel: stable
+
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Install dependencies
+        working-directory: ./
+        run: dart pub get
+
+      - name: Analyze project source
+        working-directory: ./
+        run: dart analyze

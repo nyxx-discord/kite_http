@@ -1,5 +1,6 @@
 part of kite_http;
 
+/// Controles the response for a HTTP Request
 class Response {
   bool _hasResponded = false;
 
@@ -9,6 +10,7 @@ class Response {
     this._req = req;
   }
 
+	/// Send a JSON response back
   void json(Map<dynamic, dynamic> data, {bool throwErr = false}) {
     if (this._hasResponded) {
       if (throwErr) {
@@ -25,6 +27,7 @@ class Response {
     this._req.response.close();
   }
 
+	/// Send a string response back.
   void string(String data, {bool throwErr = false}) {
     if (this._hasResponded) {
       if (throwErr) {

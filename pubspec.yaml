@@ -1,9 +1,9 @@
 name: kite_http
 description: A basic HTTP server library that support json & middleware
-version: 0.1.0
-homepage: https://github.com/HarryET/kite
-repository: https://github.com/HarryET/kite
-issue_tracker: https://github.com/HarryET/kite
+version: 0.1.1
+homepage: https://github.com/nyxx-discord/kite_http
+repository: https://github.com/nyxx-discord/kite_http
+issue_tracker: https://github.com/nyxx-discord/kite_http
 
 environment:
   sdk: '>=2.13.0 <3.0.0'

@@ -13,6 +13,7 @@ typedef RequestHandler = FutureOr<void> Function(
   Response,
 );
 
+/// The kite_http server
 class KiteServer {
   late final String _hostname;
   late final int _port;
@@ -22,19 +23,23 @@ class KiteServer {
   final Map<HandlerMetadata, RequestHandler> _handlers =
       <HandlerMetadata, RequestHandler>{};
 
+	/// Create new instace of KiteServer
   KiteServer({String listen = "0.0.0.0", int port = 8080}) {
     this._hostname = listen;
     this._port = port;
   }
 
+	/// Register middleware
   void use(MiddlewareHandler handler) {
     this._middleware.add(handler);
   }
 
+	/// Register handler
   void handle(HandlerMetadata route, RequestHandler handler) {
     this._handlers[route] = handler;
   }
 
+	/// Listen for incoming requests
   void listen() async {
     this._internalServer = await HttpServer.bind(this._hostname, this._port);
 
